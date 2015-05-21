@@ -1,0 +1,2422 @@
+  [1m[36m (17.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (5.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateReservations (20150521070631)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "table" integer, "start" datetime, "end" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_reservations_on_table" ON "reservations" ("table")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_table' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_table' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_reservations_on_end" ON "reservations" ("end")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150521070631"]]
+  [1m[36m (5.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_end' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_end' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_table' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_table' AND type='index'
+
+
+
+Started GET "/" for 188.163.5.188 at 2015-05-21 10:08:43 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.3ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (30.3ms)
+Completed 200 OK in 440ms (Views: 437.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:08:44 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:08:44 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:08:44 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:08:44 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:08:44 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:08:44 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:08:44 +0300
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:08:47 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (71.3ms)
+  Rendered reservations/new.html.erb within layouts/application (78.9ms)
+Completed 200 OK in 153ms (Views: 143.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:08:57 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 47ms (Views: 46.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:09:45 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (8.6ms)
+  Rendered reservations/new.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 33ms (Views: 33.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:09:58 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c6P7LW9knRBmQCoPd9yXYrSEdzJMXGzgqWhHuagsjSQ+aHhF0lAsiN8Ka+ueFguWI+QXm7qYRWrEGGCpMFLgtg==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"09", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"10", "end(5i)"=>"09"}, "commit"=>"Create Reservation"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["table", 1], ["start", "2015-05-21 07:09:00.000000"], ["end", "2015-05-21 10:09:00.000000"], ["created_at", "2015-05-21 07:09:58.610620"], ["updated_at", "2015-05-21 07:09:58.610620"]]
+  [1m[35m (16.2ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations/1
+Completed 302 Found in 25ms (ActiveRecord: 16.8ms)
+
+
+Started GET "/reservations/1" for 188.163.5.188 at 2015-05-21 10:09:58 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReservation Load (0.5ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered reservations/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 34ms (Views: 24.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:10:01 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 66ms (Views: 65.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:10:10 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (11.3ms)
+  Rendered reservations/new.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 47ms (Views: 46.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:10:18 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ga+4WoJ93W3a3hjul/gappLydaiIOQH6xx4gIk4lbP1UZDsyP0ls9WOUWQp+MoZSBZIVAX79KHCqbgcy1lsBbw==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"10", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"18", "end(5i)"=>"10"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["table", 1], ["start", "2015-05-21 07:10:00.000000"], ["end", "2015-05-21 18:10:00.000000"], ["created_at", "2015-05-21 07:10:18.251150"], ["updated_at", "2015-05-21 07:10:18.251150"]]
+SQLite3::ConstraintException: column table is not unique: INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.9ms)
+
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: column table is not unique: INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)):
+  app/controllers/reservations_controller.rb:30:in `block in create'
+  app/controllers/reservations_controller.rb:29:in `create'
+
+
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (17.1ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.1ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (52.5ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:10:23 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 32ms (Views: 31.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:12:50 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.4ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 32ms (Views: 29.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:12:50 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:12:50 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:12:50 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:12:50 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:12:50 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:12:50 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:12:50 +0300
+
+
+Started DELETE "/reservations/1" for 188.163.5.188 at 2015-05-21 10:12:54 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"4aoRBLpDamS+3/iR0Wlm8HHEJdShz4MMzm7VyO32/wKsYZJsB3fb/AeVuXU4o/oE5qRFfVcLqoajHvLYdYiSkA==", "id"=>"1"}
+  [1m[35mReservation Load (0.2ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "reservations" WHERE "reservations"."id" = ?  [["id", 1]]
+  [1m[36m (18.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 22ms (ActiveRecord: 18.7ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:12:54 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 24ms (Views: 23.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:12:55 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (11.7ms)
+  Rendered reservations/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 38ms (Views: 37.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:13:06 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qO9K5TPRX0UKdJeYETPndWU3/o9JSQDrW8Y9GO38C9DlJMmNjuXu3bM+1nz4+XuB8leeJr+NKWE2thoIdYJmQg==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"10", "start(5i)"=>"12", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"15", "end(5i)"=>"12"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."end" = '2015-05-21 15:12:00.000000') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["table", 1], ["start", "2015-05-21 10:12:00.000000"], ["end", "2015-05-21 15:12:00.000000"], ["created_at", "2015-05-21 07:13:06.473531"], ["updated_at", "2015-05-21 07:13:06.473531"]]
+  [1m[35m (6.4ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations/2
+Completed 302 Found in 107ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/reservations/2" for 188.163.5.188 at 2015-05-21 10:13:06 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered reservations/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 22ms (Views: 21.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:13:08 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 22ms (Views: 21.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/2" for 188.163.5.188 at 2015-05-21 10:13:10 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered reservations/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 33ms (Views: 32.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:13:12 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 31ms (Views: 30.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:13:13 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (9.8ms)
+  Rendered reservations/new.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 34ms (Views: 33.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:13:23 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"G/gPjdgENmDOL3aV0PB0xGM6ccWb9iz3nqPl0mSVollWM4zlZTCH+HdlN3E5Ougw9FoRbG0yBX3z08LC/OvPyw==", "reservation"=>{"table"=>"", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"13", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"11", "end(5i)"=>"13"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.1ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" IS NULL AND "reservations"."end" = '2015-05-21 11:13:00.000000') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reservations" ("start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["start", "2015-05-21 07:13:00.000000"], ["end", "2015-05-21 11:13:00.000000"], ["created_at", "2015-05-21 07:13:23.627961"], ["updated_at", "2015-05-21 07:13:23.627961"]]
+  [1m[35m (5.2ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations/3
+Completed 302 Found in 10ms (ActiveRecord: 5.7ms)
+
+
+Started GET "/reservations/3" for 188.163.5.188 at 2015-05-21 10:13:23 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered reservations/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 26ms (Views: 25.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:13:28 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.3ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 26ms (Views: 25.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reservations/3" for 188.163.5.188 at 2015-05-21 10:13:40 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered reservations/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 32ms (Views: 31.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:13:42 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 27ms (Views: 27.0ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/reservations/2" for 188.163.5.188 at 2015-05-21 10:13:45 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"5IZkQYrW+I0GNRhhzM318xl5d2o76foCE6Si/frxQB6pTecpN+JJFb9/WYUlB2kHjhkXw80t04h+1IXtYo8tjA==", "id"=>"2"}
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "reservations" WHERE "reservations"."id" = ?[0m  [["id", 2]]
+  [1m[35m (8.5ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 11ms (ActiveRecord: 8.8ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:13:45 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 27ms (Views: 26.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:13:47 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (1.0ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 41ms (Views: 38.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:13:47 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:13:47 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:13:47 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:13:47 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:13:47 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:13:47 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:13:47 +0300
+
+
+Started DELETE "/reservations/3" for 188.163.5.188 at 2015-05-21 10:13:50 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"tZAOKiNw0GSsSdUhujqNbQ2TZEGJeIGuYJPovh2Nu/34W41CnkRh/BUDlMVT8BGZmvME6H+8qCQN48+uhfPWbw==", "id"=>"3"}
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "reservations" WHERE "reservations"."id" = ?[0m  [["id", 3]]
+  [1m[35m (4.5ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 7ms (ActiveRecord: 4.9ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:13:50 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 38ms (Views: 37.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:13:51 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (9.0ms)
+  Rendered reservations/new.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 37ms (Views: 37.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:14:46 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Kn3EhISdCAEriuYiZICMyh9Ga7yP0BLEiSJXgVPP6H1ntkfsOam5mZLAp8aNShA+iCYLFXkUO07kUnCRy7GF7w==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"13", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"10", "end(5i)"=>"13"}, "commit"=>"Create Reservation"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReservation Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."end" = '2015-05-21 10:13:00.000000') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["table", 1], ["start", "2015-05-21 07:13:00.000000"], ["end", "2015-05-21 10:13:00.000000"], ["created_at", "2015-05-21 07:14:46.241198"], ["updated_at", "2015-05-21 07:14:46.241198"]]
+  [1m[36m (9.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations/4
+Completed 302 Found in 14ms (ActiveRecord: 9.9ms)
+
+
+Started GET "/reservations/4" for 188.163.5.188 at 2015-05-21 10:14:46 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mReservation Load (0.1ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered reservations/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 29ms (Views: 28.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:14:47 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 26ms (Views: 25.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:14:49 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (9.0ms)
+  Rendered reservations/new.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 33ms (Views: 32.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:15:04 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oDJ7WAX5wNnopek00g6OA9z4CZdhsmMR0L4iSq6Zlyrt+fgwuM1xQVHvqNA7xBL3S5hpPpd2Spu9zgVaNuf6uA==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"11", "start(5i)"=>"14", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"15", "end(5i)"=>"14"}, "commit"=>"Create Reservation"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mReservation Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."end" = '2015-05-21 15:14:00.000000') LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["table", 1], ["start", "2015-05-21 11:14:00.000000"], ["end", "2015-05-21 15:14:00.000000"], ["created_at", "2015-05-21 07:15:04.133004"], ["updated_at", "2015-05-21 07:15:04.133004"]]
+SQLite3::ConstraintException: column table is not unique: INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.8ms)
+
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: column table is not unique: INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)):
+  app/controllers/reservations_controller.rb:30:in `block in create'
+  app/controllers/reservations_controller.rb:29:in `create'
+
+
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.0ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.9ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (44.7ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:15:08 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 26ms (Views: 25.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:15:12 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (10.0ms)
+  Rendered reservations/new.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 37ms (Views: 37.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:15:20 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Jzhj7mTB01gJYjBH3wPZdxVFp5WcjnOQJee+5a/Jq1dq8+CG2fViwLAocaM2yUWDgiXHPGpKWhpIl5n1N7fGxQ==", "reservation"=>{"table"=>"", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"15", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"11", "end(5i)"=>"15"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" IS NULL AND "reservations"."end" = '2015-05-21 11:15:00.000000') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reservations" ("start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["start", "2015-05-21 07:15:00.000000"], ["end", "2015-05-21 11:15:00.000000"], ["created_at", "2015-05-21 07:15:20.984265"], ["updated_at", "2015-05-21 07:15:20.984265"]]
+  [1m[35m (5.5ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations/5
+Completed 302 Found in 10ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/reservations/5" for 188.163.5.188 at 2015-05-21 10:15:21 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered reservations/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 26ms (Views: 25.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:15:23 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 30ms (Views: 29.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:15:29 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (8.2ms)
+  Rendered reservations/new.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 32ms (Views: 31.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:15:34 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.4ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 31ms (Views: 30.5ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/reservations/5" for 188.163.5.188 at 2015-05-21 10:15:38 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Uxm0g1ogp3lzpLK+imI+0VEz2r2fsx044EywygyAEboe0jfr5xQW4cru81pjqKIlxlO6FGl3NLKNPJfalP58KA==", "id"=>"5"}
+  [1m[35mReservation Load (0.2ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "reservations" WHERE "reservations"."id" = ?  [["id", 5]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 7ms (ActiveRecord: 4.7ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:15:38 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 23ms (Views: 22.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:15:39 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (17.5ms)
+  Rendered reservations/new.html.erb within layouts/application (18.1ms)
+Completed 200 OK in 44ms (Views: 43.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:15:46 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 39ms (Views: 38.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:15:49 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (9.7ms)
+  Rendered reservations/new.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 34ms (Views: 33.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:15:55 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UtzRSE6w6rp4Sw8nEF0rfPLwQGse6UbghqJwaEUrEIwfF1Ig84RbIsEBTsP5l7eIZZAgwugtb2rr0ld43VV9Hg==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"15", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"11", "end(5i)"=>"15"}, "commit"=>"Create Reservation"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReservation Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."end" = '2015-05-21 11:15:00.000000') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["table", 1], ["start", "2015-05-21 07:15:00.000000"], ["end", "2015-05-21 11:15:00.000000"], ["created_at", "2015-05-21 07:15:55.490975"], ["updated_at", "2015-05-21 07:15:55.490975"]]
+SQLite3::ConstraintException: column table is not unique: INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.6ms)
+
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: column table is not unique: INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)):
+  app/controllers/reservations_controller.rb:30:in `block in create'
+  app/controllers/reservations_controller.rb:29:in `create'
+
+
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (19.7ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (38.3ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:16:02 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 27ms (Views: 26.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:16:10 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (22.5ms)
+  Rendered reservations/new.html.erb within layouts/application (23.3ms)
+Completed 200 OK in 61ms (Views: 60.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:16:16 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 37ms (Views: 36.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:16:32 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (9.7ms)
+  Rendered reservations/new.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 38ms (Views: 37.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:16:43 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bvxKl++00Z0vNgDYnEND+MvPt+fej6vXZwwo+8yQQWgjN8n/UoBgBZZ8QTx1id8MXK/XTihLgl0KfA/rVO4s+g==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"11", "start(5i)"=>"16", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"15", "end(5i)"=>"16"}, "commit"=>"Create Reservation"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReservation Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."end" = '2015-05-21 15:16:00.000000') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["table", 1], ["start", "2015-05-21 11:16:00.000000"], ["end", "2015-05-21 15:16:00.000000"], ["created_at", "2015-05-21 07:16:43.149176"], ["updated_at", "2015-05-21 07:16:43.149176"]]
+SQLite3::ConstraintException: column table is not unique: INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.7ms)
+
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: column table is not unique: INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)):
+  app/controllers/reservations_controller.rb:30:in `block in create'
+  app/controllers/reservations_controller.rb:29:in `create'
+
+
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.1ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.9ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (45.1ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:16:49 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 29ms (Views: 28.5ms | ActiveRecord: 0.2ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateReservations (20150521070631)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_end' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_end' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_table' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_table' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  DROP INDEX "index_reservations_on_end"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_table' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_table' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  DROP INDEX "index_reservations_on_table"
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "reservations"[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?  [["version", "20150521070631"]]
+  [1m[36m (11.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateReservations (20150521070631)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "table" integer, "start" datetime, "end" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_reservations_on_table" ON "reservations" ("table")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_table' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_table' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_reservations_on_start" ON "reservations" ("start")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150521070631"]]
+  [1m[36m (19.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_start' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_start' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_table' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_table' AND type='index'
+
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:18:04 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 30ms (Views: 27.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:18:04 +0300
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:18:04 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:18:04 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:18:04 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:18:04 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:18:04 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:18:04 +0300
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:18:07 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (8.3ms)
+  Rendered reservations/new.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 38ms (Views: 33.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:18:13 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"W2w21Y0FEwndSfQ2YKzZgqoxVBOOZKKS9LbiXg3WCFQWp7W9MDGikWQDtdKJZkV2PVE0unigixiZxsVOlahlxg==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"18", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"10", "end(5i)"=>"18"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."end" = '2015-05-21 10:18:00.000000') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["table", 1], ["start", "2015-05-21 07:18:00.000000"], ["end", "2015-05-21 10:18:00.000000"], ["created_at", "2015-05-21 07:18:13.937485"], ["updated_at", "2015-05-21 07:18:13.937485"]]
+  [1m[35m (8.0ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations/1
+Completed 302 Found in 17ms (ActiveRecord: 8.5ms)
+
+
+Started GET "/reservations/1" for 188.163.5.188 at 2015-05-21 10:18:14 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered reservations/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 82ms (Views: 79.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:18:16 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 27ms (Views: 26.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:18:18 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (9.9ms)
+  Rendered reservations/new.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 32ms (Views: 31.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:18:29 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nWQoH6gMl89FYglHG2o6NWOjqah99BcsvUEQbt9OluXQr6t3FTgmV/woSKPyoKbB9MPJAYswPqbQMTd+RzD7dw==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"11", "start(5i)"=>"18", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"15", "end(5i)"=>"18"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."end" = '2015-05-21 15:18:00.000000') LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["table", 1], ["start", "2015-05-21 11:18:00.000000"], ["end", "2015-05-21 15:18:00.000000"], ["created_at", "2015-05-21 07:18:29.381186"], ["updated_at", "2015-05-21 07:18:29.381186"]]
+SQLite3::ConstraintException: column table is not unique: INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)
+  [1m[35m (0.2ms)[0m  rollback transaction
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 1.0ms)
+
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: column table is not unique: INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)):
+  app/controllers/reservations_controller.rb:30:in `block in create'
+  app/controllers/reservations_controller.rb:29:in `create'
+
+
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.7ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.5ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (35.0ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:18:43 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 26ms (Views: 25.5ms | ActiveRecord: 0.2ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateReservations (20150521070631)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_start' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_start' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_table' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_table' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  DROP INDEX "index_reservations_on_start"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_table' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_table' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  DROP INDEX "index_reservations_on_table"
+  [1m[36m (1.1ms)[0m  [1mDROP TABLE "reservations"[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?  [["version", "20150521070631"]]
+  [1m[36m (11.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateReservations (20150521070631)
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "table" integer, "start" datetime, "end" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_reservations_on_table" ON "reservations" ("table")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150521070631"]]
+  [1m[36m (7.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_table' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_table' AND type='index'
+[0m
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:19:08 +0300
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 25ms (Views: 22.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:19:08 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:19:08 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:19:08 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:19:08 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:19:08 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:19:08 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:19:08 +0300
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:19:10 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (11.1ms)
+  Rendered reservations/new.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 40ms (Views: 35.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:19:23 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bvKxs28lxQJWnsxeJJL/cg2k/wQFLO0YluiWOSseEKIjOTLb0hF0mu/UjbrNWGOGmsSfrfPoxJL7mLEps2B9MA==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"19", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"10", "end(5i)"=>"19"}, "commit"=>"Create Reservation"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReservation Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."end" = '2015-05-21 10:19:00.000000') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["table", 1], ["start", "2015-05-21 07:19:00.000000"], ["end", "2015-05-21 10:19:00.000000"], ["created_at", "2015-05-21 07:19:23.132108"], ["updated_at", "2015-05-21 07:19:23.132108"]]
+  [1m[36m (6.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations/1
+Completed 302 Found in 14ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/reservations/1" for 188.163.5.188 at 2015-05-21 10:19:23 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mReservation Load (0.2ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered reservations/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 26ms (Views: 24.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:19:24 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 26ms (Views: 25.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:19:26 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (9.7ms)
+  Rendered reservations/new.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 35ms (Views: 33.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:19:34 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"e1W8Hqae545k816ynhyN/BdVqZgEW9XxjyOULYwxSHU2nj92G6pWFt25H1Z31hEIgDXJMfKf/HviU7M9FE8l5w==", "reservation"=>{"table"=>"", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"11", "start(5i)"=>"19", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"12", "end(5i)"=>"19"}, "commit"=>"Create Reservation"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mReservation Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" IS NULL AND "reservations"."end" = '2015-05-21 12:19:00.000000') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reservations" ("start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["start", "2015-05-21 11:19:00.000000"], ["end", "2015-05-21 12:19:00.000000"], ["created_at", "2015-05-21 07:19:34.013700"], ["updated_at", "2015-05-21 07:19:34.013700"]]
+  [1m[36m (3.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations/2
+Completed 302 Found in 9ms (ActiveRecord: 4.2ms)
+
+
+Started GET "/reservations/2" for 188.163.5.188 at 2015-05-21 10:19:34 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mReservation Load (0.1ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered reservations/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 24ms (Views: 22.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:19:36 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.3ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 37ms (Views: 36.7ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/reservations/2" for 188.163.5.188 at 2015-05-21 10:19:48 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"QWA3YkyDmil1hfyy5TsCak8FB930IQV0oktoAwL4/aUMq7QK8bcrsczPvVYM8Z6e2GVndALlLP7PO08TmoaQNw==", "id"=>"2"}
+  [1m[35mReservation Load (0.1ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "reservations" WHERE "reservations"."id" = ?  [["id", 2]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 8ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:19:48 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 31ms (Views: 30.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:19:49 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (7.3ms)
+  Rendered reservations/new.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 28ms (Views: 27.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:20:04 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0km9kbZPW9PAei80O0jXQv6L3aAVG13GVdW/6D1dMQKfgj75C3vqS3kwbtDSgku2aeu9CePfdEw4pZj4pSNckA==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"11", "start(5i)"=>"19", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"12", "end(5i)"=>"19"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.8ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."end" = '2015-05-21 12:19:00.000000') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["table", 1], ["start", "2015-05-21 11:19:00.000000"], ["end", "2015-05-21 12:19:00.000000"], ["created_at", "2015-05-21 07:20:04.607096"], ["updated_at", "2015-05-21 07:20:04.607096"]]
+SQLite3::ConstraintException: column table is not unique: INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)
+  [1m[35m (0.1ms)[0m  rollback transaction
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.2ms)
+
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: column table is not unique: INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)):
+  app/controllers/reservations_controller.rb:30:in `block in create'
+  app/controllers/reservations_controller.rb:29:in `create'
+
+
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (14.1ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.2ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /home/deployer/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (51.4ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:20:08 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 32ms (Views: 31.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:20:11 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 40ms (Views: 39.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:20:11 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:20:11 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:20:11 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:20:11 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:20:11 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:20:11 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:20:11 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateReservations (20150521070631)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_table' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_table' AND type='index'
+
+  [1m[36m (0.4ms)[0m  [1mDROP INDEX "index_reservations_on_table"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "reservations"
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20150521070631"]]
+  [1m[35m (9.5ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateReservations (20150521070631)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "table" integer, "start" datetime, "end" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150521070631"]]
+  [1m[36m (9.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:21:16 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 30ms (Views: 27.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:21:16 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:21:16 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:21:16 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:21:17 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:21:17 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:21:17 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:21:17 +0300
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:21:18 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (10.6ms)
+  Rendered reservations/new.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 44ms (Views: 37.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:21:25 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FtgdrTS6itqnPK4AmeYZrGDa2oXuIeHfw5VEqb31u1hbE57FiY47Qh527+RwLIVY97q6LBjlyFWu5WO5JYvWyg==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"21", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"10", "end(5i)"=>"21"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."start" = '2015-05-21 07:21:00.000000' AND "reservations"."end" = '2015-05-21 10:21:00.000000') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["table", 1], ["start", "2015-05-21 07:21:00.000000"], ["end", "2015-05-21 10:21:00.000000"], ["created_at", "2015-05-21 07:21:25.598682"], ["updated_at", "2015-05-21 07:21:25.598682"]]
+  [1m[35m (6.3ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations/1
+Completed 302 Found in 15ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/reservations/1" for 188.163.5.188 at 2015-05-21 10:21:25 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered reservations/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 26ms (Views: 23.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:21:27 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 36ms (Views: 35.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:21:31 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (11.7ms)
+  Rendered reservations/new.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 45ms (Views: 44.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:21:40 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"A8n2S6kRQ0jGAATIMpaxZcditkNQrtt3VRPv/Bmk0qJOAnUjFCXy0H9KRSzbXC2RUALW6qZq8v04Y8jsgdq/MA==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"11", "start(5i)"=>"21", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"12", "end(5i)"=>"21"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."start" = '2015-05-21 11:21:00.000000' AND "reservations"."end" = '2015-05-21 12:21:00.000000') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["table", 1], ["start", "2015-05-21 11:21:00.000000"], ["end", "2015-05-21 12:21:00.000000"], ["created_at", "2015-05-21 07:21:40.469778"], ["updated_at", "2015-05-21 07:21:40.469778"]]
+  [1m[35m (4.9ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations/2
+Completed 302 Found in 10ms (ActiveRecord: 5.3ms)
+
+
+Started GET "/reservations/2" for 188.163.5.188 at 2015-05-21 10:21:40 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered reservations/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 29ms (Views: 28.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:21:42 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 29ms (Views: 28.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:21:51 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (9.3ms)
+  Rendered reservations/new.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 47ms (Views: 46.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:22:00 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SE9lEtYV4yE1CFaAkoLOYcS9Jbp6vY/+Ho5eu5PyeRoFhOZ6ayFSuYxCF2R7SFKVU91FE4x5pnRz/nmrC4wUiA==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"21", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"08", "end(5i)"=>"21"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."start" = '2015-05-21 07:21:00.000000' AND "reservations"."end" = '2015-05-21 08:21:00.000000') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["table", 1], ["start", "2015-05-21 07:21:00.000000"], ["end", "2015-05-21 08:21:00.000000"], ["created_at", "2015-05-21 07:22:00.806540"], ["updated_at", "2015-05-21 07:22:00.806540"]]
+  [1m[35m (4.4ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations/3
+Completed 302 Found in 9ms (ActiveRecord: 4.8ms)
+
+
+Started GET "/reservations/3" for 188.163.5.188 at 2015-05-21 10:22:00 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered reservations/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 26ms (Views: 25.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:22:02 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.3ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 41ms (Views: 40.2ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/reservations/3" for 188.163.5.188 at 2015-05-21 10:22:09 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"JgKZ6x2e7UliM9W3wlE1DJBYu9tTu1JJjudGV4pZfm5ryRqDoKpc0dt5lFMrm6n4BzjbcqV/e8Pjl2FHEicT/A==", "id"=>"3"}
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "reservations" WHERE "reservations"."id" = ?[0m  [["id", 3]]
+  [1m[35m (5.5ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 11ms (ActiveRecord: 6.1ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:22:09 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.3ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 40ms (Views: 39.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:22:12 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 39ms (Views: 38.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:22:12 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:22:12 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:22:12 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:22:12 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:22:12 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:22:12 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:22:12 +0300
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:23:44 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.4ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 43ms (Views: 39.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:23:44 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:23:44 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:23:44 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:23:44 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:23:44 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:23:44 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:23:44 +0300
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:23:46 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (12.7ms)
+  Rendered reservations/new.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 45ms (Views: 44.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:23:54 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"48sMNQEkwZMWi/mqYLKPfgqIgX/h9TmxWcUSzUmOIQeuAI9dvBBwC6/BuE6JeBOKnejh1hcxEDs0tTXd0fBMlQ==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"23", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"08", "end(5i)"=>"23"}, "commit"=>"Create Reservation"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReservation Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."start" = '2015-05-21 07:23:00.000000' AND "reservations"."end" = '2015-05-21 08:23:00.000000') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["table", 1], ["start", "2015-05-21 07:23:00.000000"], ["end", "2015-05-21 08:23:00.000000"], ["created_at", "2015-05-21 07:23:54.036413"], ["updated_at", "2015-05-21 07:23:54.036413"]]
+  [1m[36m (20.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations/4
+Completed 302 Found in 31ms (ActiveRecord: 21.0ms)
+
+
+Started GET "/reservations/4" for 188.163.5.188 at 2015-05-21 10:23:54 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mReservation Load (0.2ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered reservations/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 40ms (Views: 38.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:23:55 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 27ms (Views: 26.9ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/reservations/4" for 188.163.5.188 at 2015-05-21 10:24:04 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"RJwxkgWxAIGR/3qNj39LX6HIqmjW08QvJP/vjXJ//XgJV7L6uIWxGSi1O2lmtderNqjKwSAX7aVJj8id6gGQ6g==", "id"=>"4"}
+  [1m[35mReservation Load (0.1ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "reservations" WHERE "reservations"."id" = ?  [["id", 4]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 8ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:24:04 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 36ms (Views: 35.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:24:30 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.3ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 35ms (Views: 32.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:24:30 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:24:30 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:24:30 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:24:30 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:24:30 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:24:30 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:24:30 +0300
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:24:32 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (9.5ms)
+  Rendered reservations/new.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 34ms (Views: 33.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:24:39 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gFeyGGS0/lBcbBBpl0e8XNGEBbufaeCW3FjxuAoWsOrNnDFw2YBPyOUmUY1+jSCoRuRlEmmtyRyxKNaokmjdeA==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"24", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"08", "end(5i)"=>"24"}, "commit"=>"Create Reservation"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReservation Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ("reservations"."start" = '2015-05-21 07:24:00.000000' AND "reservations"."table" = 1) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["table", 1], ["start", "2015-05-21 07:24:00.000000"], ["end", "2015-05-21 08:24:00.000000"], ["created_at", "2015-05-21 07:24:39.099743"], ["updated_at", "2015-05-21 07:24:39.099743"]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations/5
+Completed 302 Found in 13ms (ActiveRecord: 4.4ms)
+
+
+Started GET "/reservations/5" for 188.163.5.188 at 2015-05-21 10:24:39 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mReservation Load (0.4ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered reservations/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 33ms (Views: 31.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:24:40 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 26ms (Views: 25.2ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/reservations/5" for 188.163.5.188 at 2015-05-21 10:24:54 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"6dWN8giCvGZ736qyMpiBmteW99cneC44CISAhuQLTZekHg6atbYN/sKV61bbUh1uQPaXftG8B7Jl9KeWfHUgBQ==", "id"=>"5"}
+  [1m[35mReservation Load (0.1ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "reservations" WHERE "reservations"."id" = ?  [["id", 5]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 8ms (ActiveRecord: 5.4ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:24:54 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 31ms (Views: 30.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:28:18 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.5ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 57ms (Views: 51.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:28:18 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:28:18 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:28:18 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:28:18 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:28:18 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:28:18 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:28:18 +0300
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:28:20 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (9.8ms)
+  Rendered reservations/new.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 37ms (Views: 36.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:28:22 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.3ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 28ms (Views: 27.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:28:29 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (8.5ms)
+  Rendered reservations/new.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 41ms (Views: 40.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:28:41 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"D1gMZfD/NFhFzClF1PXznfDbTBWMXSyohK3SlmcmGulCk48NTcuFwPyGaKE9P29pZ7ssvHqZBSLp3fWG/1h3ew==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"28", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"08", "end(5i)"=>"28"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."start" = '2015-05-21 07:28:00.000000') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["table", 1], ["start", "2015-05-21 07:28:00.000000"], ["end", "2015-05-21 08:28:00.000000"], ["created_at", "2015-05-21 07:28:41.046335"], ["updated_at", "2015-05-21 07:28:41.046335"]]
+  [1m[35m (8.9ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations/6
+Completed 302 Found in 18ms (ActiveRecord: 9.4ms)
+
+
+Started GET "/reservations/6" for 188.163.5.188 at 2015-05-21 10:28:41 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mReservation Load (0.4ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered reservations/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 40ms (Views: 38.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:28:42 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.4ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 35ms (Views: 34.3ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/reservations/6" for 188.163.5.188 at 2015-05-21 10:28:51 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"iKcnvIlQ73bJCl0SeEEesZ3ykQ1ATlHqhrmZKaKzUNXFbKTUNGRe7nBAHPaRi4JFCpLxpLaKeGDryb45Os09Rw==", "id"=>"6"}
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "reservations" WHERE "reservations"."id" = ?[0m  [["id", 6]]
+  [1m[35m (4.8ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 8ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:28:51 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 38ms (Views: 37.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:29:02 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.4ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (42.4ms)
+Completed 200 OK in 323ms (Views: 318.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:29:03 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:29:03 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:29:03 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:29:03 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:29:03 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:29:03 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:29:03 +0300
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:29:04 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (26.4ms)
+  Rendered reservations/new.html.erb within layouts/application (30.3ms)
+Completed 200 OK in 77ms (Views: 76.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:29:13 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"m4ydEEYyPKFQjLEYyz3oEpu9D7e9+2xAYVnXxP2rK3TWRx54+waNOenG8Pwi93TmDN1vHks/RcoMKfDUZdVG5g==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"29", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"08", "end(5i)"=>"29"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."start" = '2015-05-21 07:29:00.000000') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["table", 1], ["start", "2015-05-21 07:29:00.000000"], ["end", "2015-05-21 08:29:00.000000"], ["created_at", "2015-05-21 07:29:13.851971"], ["updated_at", "2015-05-21 07:29:13.851971"]]
+  [1m[35m (7.6ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations/7
+Completed 302 Found in 27ms (ActiveRecord: 8.2ms)
+
+
+Started GET "/reservations/7" for 188.163.5.188 at 2015-05-21 10:29:14 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 7]]
+  Rendered reservations/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 28ms (Views: 23.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:29:15 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 37ms (Views: 36.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:30:09 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.3ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 33ms (Views: 29.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:30:09 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:30:09 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:30:10 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:30:10 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:30:10 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:30:10 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:30:10 +0300
+
+
+Started DELETE "/reservations/7" for 188.163.5.188 at 2015-05-21 10:30:12 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"mKD/WrlFqq2oxOiMmPUtT69Bs8E9Ci0kjFq+joK3+UTVa3wyBHEbNRGOqWhxP7G7OCHTaMvOBK7hKpmeGsmU1g==", "id"=>"7"}
+  [1m[35mReservation Load (0.8ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "reservations" WHERE "reservations"."id" = ?  [["id", 7]]
+  [1m[36m (7.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 14ms (ActiveRecord: 8.9ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:30:13 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.4ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 105ms (Views: 104.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:30:14 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.3ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 37ms (Views: 36.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:30:14 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:30:14 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:30:14 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:30:14 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:30:14 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:30:14 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:30:14 +0300
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:30:16 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (12.8ms)
+  Rendered reservations/new.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 49ms (Views: 48.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:30:22 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7Fj5e1D28KEPuP9nfLohJAiV6taSc1B0EA6fs2HDCXahk3oT7cJBObbyvoOVcL3Qn/WKf2S3ef59frij+b1k5A==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"30", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"08", "end(5i)"=>"30"}, "commit"=>"Create Reservation"}
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mReservation Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ("reservations"."start" = '2015-05-21 07:30:00.000000' AND "reservations"."table" = 1) LIMIT 1[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."end" = '2015-05-21 08:30:00.000000' AND "reservations"."table" = 1) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["table", 1], ["start", "2015-05-21 07:30:00.000000"], ["end", "2015-05-21 08:30:00.000000"], ["created_at", "2015-05-21 07:30:22.889859"], ["updated_at", "2015-05-21 07:30:22.889859"]]
+  [1m[35m (5.7ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations/8
+Completed 302 Found in 20ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/reservations/8" for 188.163.5.188 at 2015-05-21 10:30:22 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 8]]
+  Rendered reservations/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 81ms (Views: 79.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:30:24 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.3ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 39ms (Views: 38.5ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/reservations/8" for 188.163.5.188 at 2015-05-21 10:30:30 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"7WC3FlRh8qFPhtrN60O9a5YYmGkoCiPJ+baVLus6zW6gqzR+6VVDOfbMmykCiSGfAXj4wN7OCkOUxrI+c0Sg/A==", "id"=>"8"}
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "reservations" WHERE "reservations"."id" = ?[0m  [["id", 8]]
+  [1m[35m (4.8ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 8ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:30:30 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 31ms (Views: 30.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:31:27 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (43.8ms)
+Completed 200 OK in 235ms (Views: 231.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:31:28 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:31:28 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:31:28 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:31:28 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:31:28 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:31:28 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:31:28 +0300
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:31:30 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (82.3ms)
+  Rendered reservations/new.html.erb within layouts/application (96.3ms)
+Completed 200 OK in 130ms (Views: 128.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:31:33 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.5ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 49ms (Views: 48.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:31:35 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 32ms (Views: 31.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:31:35 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:31:35 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:31:35 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:31:35 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:31:35 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:31:35 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:31:35 +0300
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:31:37 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (17.7ms)
+  Rendered reservations/new.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 53ms (Views: 53.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:31:43 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"REUzlynj7BGy6CpJagCXv8qPf4drVHaFWGSVeAAAgZUJjrD/lNddiQuia62DygtLXe8fLp2QXw81FLJomH7sBw==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"31", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"08", "end(5i)"=>"31"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."start" = '2015-05-21 07:31:00.000000' AND "reservations"."end" = '2015-05-21 08:31:00.000000') LIMIT 1
+  [1m[36mReservation Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ("reservations"."start" = '2015-05-21 07:31:00.000000' AND "reservations"."table" = 1) LIMIT 1[0m
+  [1m[35mReservation Exists (0.1ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."end" = '2015-05-21 08:31:00.000000' AND "reservations"."table" = 1) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["table", 1], ["start", "2015-05-21 07:31:00.000000"], ["end", "2015-05-21 08:31:00.000000"], ["created_at", "2015-05-21 07:31:43.503963"], ["updated_at", "2015-05-21 07:31:43.503963"]]
+  [1m[35m (6.1ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations/9
+Completed 302 Found in 36ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/reservations/9" for 188.163.5.188 at 2015-05-21 10:31:43 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 9]]
+  Rendered reservations/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 39ms (Views: 33.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:31:45 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.3ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 29ms (Views: 28.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:34:19 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.4ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 37ms (Views: 33.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:34:19 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:34:19 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:34:19 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:34:19 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:34:19 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:34:19 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:34:19 +0300
+
+
+Started DELETE "/reservations/9" for 188.163.5.188 at 2015-05-21 10:34:22 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"KsYYeigCIDh3P3FHsNJ/lz9we9GaEHks7cw/4rEnkipnDZsSlTaRoM51MKNZGONjqBAbeGzUUKaAvBjyKVn/uA==", "id"=>"9"}
+  [1m[35mReservation Load (0.6ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 9]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "reservations" WHERE "reservations"."id" = ?  [["id", 9]]
+  [1m[36m (13.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 18ms (ActiveRecord: 14.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:34:22 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 35ms (Views: 34.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:34:23 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (10.2ms)
+  Rendered reservations/new.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 39ms (Views: 39.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:34:31 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OEROmmTM6bPuAEtDkk7bu5TKkijTacCWU11a4JYxCrh1j83y2fhYK1dKCqd7hEdPA6rygSWt6Rw+LX3wDk9nKg==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"08", "start(5i)"=>"34", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"09", "end(5i)"=>"34"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."start" = '2015-05-21 08:34:00.000000') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["table", 1], ["start", "2015-05-21 08:34:00.000000"], ["end", "2015-05-21 09:34:00.000000"], ["created_at", "2015-05-21 07:34:31.552355"], ["updated_at", "2015-05-21 07:34:31.552355"]]
+  [1m[35m (4.6ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations/10
+Completed 302 Found in 16ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/reservations/10" for 188.163.5.188 at 2015-05-21 10:34:31 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 10]]
+  Rendered reservations/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 31ms (Views: 29.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:34:33 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.4ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 31ms (Views: 29.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:36:49 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.3ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 36ms (Views: 32.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:36:49 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:36:49 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:36:49 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:36:49 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:36:49 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:36:49 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:36:49 +0300
+
+
+Started DELETE "/reservations/10" for 188.163.5.188 at 2015-05-21 10:36:51 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"H+84GIogCXhh56osTtgx44rdiLsAR9uqwWSlYc79YnZSJLtwNxS44Nit68inEq0XHb3oEvaD8iCsFIJxVoMP5A==", "id"=>"10"}
+  [1m[35mReservation Load (0.2ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "reservations" WHERE "reservations"."id" = ?  [["id", 10]]
+  [1m[36m (27.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 35ms (ActiveRecord: 27.8ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:36:51 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.3ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 60ms (Views: 59.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:36:56 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (13.9ms)
+  Rendered reservations/new.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 38ms (Views: 37.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:37:04 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aoOieedtsPiKYmDfMA/7VeWRbqxjlUAXKGp/W220xYonSCERWlkBYDMoITvZxWehcvEOBZVRaZ1FGlhL9cqoGA==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"21", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"07", "end(5i)"=>"36"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."start" = '2015-05-21 07:21:00.000000') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered reservations/_form.html.erb (9.6ms)
+  Rendered reservations/new.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 48ms (Views: 41.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:37:07 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 28ms (Views: 27.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:37:17 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (10.5ms)
+  Rendered reservations/new.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 51ms (Views: 50.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:37:24 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"znPR0tNqyWqGqntXhkjMQLRaQjDChFaBQoOqChacCpeDuFK6bl548j/gOrNvglC0IzoimTRAfwsv840ajuJnBQ==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"08", "start(5i)"=>"37", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"07", "end(5i)"=>"37"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."start" = '2015-05-21 08:37:00.000000') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["table", 1], ["start", "2015-05-21 08:37:00.000000"], ["end", "2015-05-21 07:37:00.000000"], ["created_at", "2015-05-21 07:37:24.048923"], ["updated_at", "2015-05-21 07:37:24.048923"]]
+  [1m[35m (4.7ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations/11
+Completed 302 Found in 10ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/reservations/11" for 188.163.5.188 at 2015-05-21 10:37:24 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 11]]
+  Rendered reservations/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 30ms (Views: 29.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:37:26 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 32ms (Views: 31.4ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/reservations/11" for 188.163.5.188 at 2015-05-21 10:38:12 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ENf7VZ/1ELE8DgtZ7eoKM3BiGPxHO5YIJCCfftN5U1ddHHg9IsGhKYVESr0EIJbH5wJ4VbH/v4JJULhuSwc+xQ==", "id"=>"11"}
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "reservations" WHERE "reservations"."id" = ?[0m  [["id", 11]]
+  [1m[35m (9.4ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 24ms (ActiveRecord: 10.4ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:38:12 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 25ms (Views: 24.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:38:14 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (9.8ms)
+  Rendered reservations/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 54ms (Views: 53.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:38:17 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.3ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 31ms (Views: 30.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:38:20 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (10.1ms)
+  Rendered reservations/new.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 39ms (Views: 38.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:38:35 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l0VkU0yt+9+ACHe6fK7tF+kM3o673Jkzuxiv4SDGQ7Tajuc78ZlKRzlCNl6VZHHjfmy+J00YsLnWaIjxuLguJg==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"21", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"07", "end(5i)"=>"38"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."start" = '2015-05-21 07:21:00.000000' AND "reservations"."end" = '2015-05-21 07:38:00.000000') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["table", 1], ["start", "2015-05-21 07:21:00.000000"], ["end", "2015-05-21 07:38:00.000000"], ["created_at", "2015-05-21 07:38:35.887220"], ["updated_at", "2015-05-21 07:38:35.887220"]]
+  [1m[35m (4.5ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations/12
+Completed 302 Found in 13ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/reservations/12" for 188.163.5.188 at 2015-05-21 10:38:35 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 12]]
+  Rendered reservations/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 27ms (Views: 26.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:38:38 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 28ms (Views: 27.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:39:20 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.4ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 37ms (Views: 34.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:39:20 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:39:20 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:39:20 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:39:20 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:39:20 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:39:20 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:39:20 +0300
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:39:22 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (10.6ms)
+  Rendered reservations/new.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 40ms (Views: 39.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:39:23 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 23ms (Views: 22.7ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/reservations/12" for 188.163.5.188 at 2015-05-21 10:39:26 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"1Q4a5QxpmKFd1bQo5pDk20VvOmY3KOKIizIlKKB6I9+YxZmNsV0pOeSf9cwPWngv0g9az8HsywLmQgI4OAROTQ==", "id"=>"12"}
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "reservations" WHERE "reservations"."id" = ?[0m  [["id", 12]]
+  [1m[35m (7.3ms)[0m  commit transaction
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 11ms (ActiveRecord: 7.7ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:39:26 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 60ms (Views: 59.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:39:31 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.4ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 42ms (Views: 34.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:39:31 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:39:31 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:39:31 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:39:31 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:39:31 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:39:31 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:39:31 +0300
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:39:33 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (10.6ms)
+  Rendered reservations/new.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 40ms (Views: 39.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:39:40 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8Zyjd/AgrA7v5emM9FgTAWmoEhti3Uw8lrRvIlylQM+8VyAfTRQdllavqGgdko/1/shyspQZZbb7xEgyxNstXQ==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"21", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"07", "end(5i)"=>"39"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."start" = '2015-05-21 07:21:00.000000') LIMIT 1
+  [1m[36mReservation Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."end" = '2015-05-21 07:39:00.000000') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered reservations/_form.html.erb (8.8ms)
+  Rendered reservations/new.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 43ms (Views: 35.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:39:42 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 30ms (Views: 29.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:39:50 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (8.9ms)
+  Rendered reservations/new.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 34ms (Views: 33.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:40:00 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1A0d45/hk3AyKQgZLrwJNdd7NQm4w8iJCT2sqFA032+Zxp6LItUi6ItjSf3HdpXBQBtVoE4H4QNkTYu4yEqy/Q==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"39", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"10", "end(5i)"=>"21"}, "commit"=>"Create Reservation"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReservation Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."start" = '2015-05-21 07:39:00.000000') LIMIT 1[0m
+  [1m[35mReservation Exists (0.1ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."end" = '2015-05-21 10:21:00.000000') LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  Rendered reservations/_form.html.erb (13.3ms)
+  Rendered reservations/new.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 52ms (Views: 46.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:40:02 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.5ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 41ms (Views: 39.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:40:04 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (22.0ms)
+  Rendered reservations/new.html.erb within layouts/application (22.8ms)
+Completed 200 OK in 50ms (Views: 49.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:40:17 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YVHVy9BfZSCMDksynRDB2EBxJv409QHD10Nry5fouDcsmlajbWvUuDVECtZ02l0s1xFGV8IxKEm6M0zbD5bVpQ==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"40", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"10", "end(5i)"=>"22"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.1ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."start" = '2015-05-21 07:40:00.000000') LIMIT 1
+  [1m[36mReservation Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ("reservations"."table" = 1 AND "reservations"."end" = '2015-05-21 10:22:00.000000') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["table", 1], ["start", "2015-05-21 07:40:00.000000"], ["end", "2015-05-21 10:22:00.000000"], ["created_at", "2015-05-21 07:40:17.422199"], ["updated_at", "2015-05-21 07:40:17.422199"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations/13
+Completed 302 Found in 12ms (ActiveRecord: 5.8ms)
+
+
+Started GET "/reservations/13" for 188.163.5.188 at 2015-05-21 10:40:17 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mReservation Load (0.2ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 13]]
+  Rendered reservations/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 30ms (Views: 27.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:40:19 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 38ms (Views: 37.1ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/reservations/13" for 188.163.5.188 at 2015-05-21 10:43:09 +0300
+Processing by ReservationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"pFpBFycOlcpRZ1E+IAW2/J/xkDeaQHbmx7NFEWPaR2vpkcJ/mjokUugtENrJzyoICJHwnmyEX2yqw2IB+6Qq+Q==", "id"=>"13"}
+  [1m[35mReservation Load (0.2ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 13]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "reservations" WHERE "reservations"."id" = ?  [["id", 13]]
+  [1m[36m (9.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations
+Completed 302 Found in 29ms (ActiveRecord: 10.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:43:09 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 27ms (Views: 26.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:43:11 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 28ms (Views: 27.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:43:11 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:43:11 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:43:11 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:43:11 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:43:11 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:43:11 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:43:11 +0300
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:45:00 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (36.4ms)
+Completed 200 OK in 219ms (Views: 215.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:45:01 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:45:01 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:45:01 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:45:01 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:45:01 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:45:01 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:45:01 +0300
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:45:03 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (36.0ms)
+  Rendered reservations/new.html.erb within layouts/application (48.6ms)
+Completed 200 OK in 127ms (Views: 126.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:45:11 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hdwmnnVdde4/YvwCDyir95uo0yiWTCL6nAqPW6XLcmHIF6X2yGnEdoYovebm4jcDDMizgWCIC3DxeqhLPbUf8w==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"07", "start(5i)"=>"45", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"08", "end(5i)"=>"45"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (1.0ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ((reservations.end IS NULL OR reservations.end >= '2015-05-21 07:45:00.000000') AND (reservations.start IS NULL OR reservations.start <= '2015-05-21 08:45:00.000000')) LIMIT 1
+  [1m[36m (0.8ms)[0m  [1mrollback transaction[0m
+  Rendered reservations/_form.html.erb (16.2ms)
+  Rendered reservations/new.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 123ms (Views: 78.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:45:13 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 41ms (Views: 40.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:45:27 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (8.9ms)
+  Rendered reservations/new.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 60ms (Views: 59.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:45:35 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"K3XXsIR2a/iS7/ztOcVbUc06ICpG4OTWF2atfAVtzPxmvlTYOULaYCulvQnQD8elWlpAg7AkzVx6FopsnROhbg==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"09", "start(5i)"=>"45", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"10", "end(5i)"=>"45"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ((reservations.end IS NULL OR reservations.end >= '2015-05-21 09:45:00.000000') AND (reservations.start IS NULL OR reservations.start <= '2015-05-21 10:45:00.000000')) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered reservations/_form.html.erb (9.6ms)
+  Rendered reservations/new.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 41ms (Views: 36.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:45:38 +0300
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.9ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 26ms (Views: 24.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:45:45 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (10.2ms)
+  Rendered reservations/new.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 40ms (Views: 39.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:45:50 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 27ms (Views: 26.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:49:25 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReservationsController#index as HTML
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations"
+  Rendered reservations/index.html.erb within layouts/application (35.7ms)
+Completed 200 OK in 280ms (Views: 276.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:49:26 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:49:26 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:49:26 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:49:26 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:49:26 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:49:26 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:49:26 +0300
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:49:28 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (27.2ms)
+  Rendered reservations/new.html.erb within layouts/application (30.7ms)
+Completed 200 OK in 55ms (Views: 54.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:49:34 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MyoXFBt6vRWJ7H/V7AfMDHHBgwTmHtPG03K/B3bk2AB+4ZR8pk4MjTCmPjEFzVD45qHjrRDa+ky+ApgX7pq1kg==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"08", "start(5i)"=>"49", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"07", "end(5i)"=>"49"}, "commit"=>"Create Reservation"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mReservation Exists (0.2ms)[0m  SELECT  1 AS one FROM "reservations" WHERE ((reservations.end IS NULL OR reservations.end >= '2015-05-21 08:49:00.000000') AND (reservations.start IS NULL OR reservations.start <= '2015-05-21 07:49:00.000000')) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered reservations/_form.html.erb (10.8ms)
+  Rendered reservations/new.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 92ms (Views: 77.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:50:03 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MyoXFBt6vRWJ7H/V7AfMDHHBgwTmHtPG03K/B3bk2AB+4ZR8pk4MjTCmPjEFzVD45qHjrRDa+ky+ApgX7pq1kg==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"08", "start(5i)"=>"49", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"07", "end(5i)"=>"49"}, "commit"=>"Create Reservation"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReservation Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ((reservations.end IS NULL OR reservations.end >= '2015-05-21 08:49:00.000000') AND (reservations.start IS NULL OR reservations.start <= '2015-05-21 07:49:00.000000')) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered reservations/_form.html.erb (13.2ms)
+  Rendered reservations/new.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 68ms (Views: 53.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/reservations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 188.163.5.188 at 2015-05-21 10:50:03 +0300
+
+
+Started GET "/assets/scaffolds.self-3d20844b21fbdac57d74cc10822258198fb26c9489416da28d2727efccd4de23.css?body=1" for 188.163.5.188 at 2015-05-21 10:50:03 +0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 188.163.5.188 at 2015-05-21 10:50:03 +0300
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 188.163.5.188 at 2015-05-21 10:50:03 +0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 188.163.5.188 at 2015-05-21 10:50:03 +0300
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for 188.163.5.188 at 2015-05-21 10:50:03 +0300
+
+
+Started GET "/assets/reservations.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for 188.163.5.188 at 2015-05-21 10:50:03 +0300
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:50:06 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 44ms (Views: 43.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:50:08 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (11.9ms)
+  Rendered reservations/new.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 73ms (Views: 72.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:50:19 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"X5OQXkZ01hAHjQk2eNWr+see/Of/36O0WudIeU9G48ASWBM2+0BniL7HSNKRHzcOUP6cTgkbij43l29p1ziOUg==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"10", "start(5i)"=>"50", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"11", "end(5i)"=>"50"}, "commit"=>"Create Reservation"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReservation Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ((reservations.end IS NULL OR reservations.end >= '2015-05-21 10:50:00.000000') AND (reservations.start IS NULL OR reservations.start <= '2015-05-21 11:50:00.000000')) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered reservations/_form.html.erb (29.3ms)
+  Rendered reservations/new.html.erb within layouts/application (30.4ms)
+Completed 200 OK in 65ms (Views: 59.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:50:28 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 36ms (Views: 35.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations/new" for 188.163.5.188 at 2015-05-21 10:50:38 +0300
+Processing by ReservationsController#new as HTML
+  Rendered reservations/_form.html.erb (10.9ms)
+  Rendered reservations/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 37ms (Views: 36.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/reservations" for 188.163.5.188 at 2015-05-21 10:50:51 +0300
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BNEiSSMNTnhKh/dgmUZP2aqZByDszit4EZ4d6f7fVkFJGqEhnjn/4PPNtoRwjNMtPflniRoKAvJ87jr5ZqE70w==", "reservation"=>{"table"=>"1", "start(1i)"=>"2015", "start(2i)"=>"5", "start(3i)"=>"21", "start(4i)"=>"10", "start(5i)"=>"22", "end(1i)"=>"2015", "end(2i)"=>"5", "end(3i)"=>"21", "end(4i)"=>"10", "end(5i)"=>"50"}, "commit"=>"Create Reservation"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReservation Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "reservations" WHERE ((reservations.end IS NULL OR reservations.end >= '2015-05-21 10:22:00.000000') AND (reservations.start IS NULL OR reservations.start <= '2015-05-21 10:50:00.000000')) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reservations" ("table", "start", "end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["table", 1], ["start", "2015-05-21 10:22:00.000000"], ["end", "2015-05-21 10:50:00.000000"], ["created_at", "2015-05-21 07:50:51.586173"], ["updated_at", "2015-05-21 07:50:51.586173"]]
+  [1m[36m (8.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://212.26.132.49:2272/reservations/14
+Completed 302 Found in 14ms (ActiveRecord: 8.9ms)
+
+
+Started GET "/reservations/14" for 188.163.5.188 at 2015-05-21 10:50:51 +0300
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35mReservation Load (0.3ms)[0m  SELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT 1  [["id", 14]]
+  Rendered reservations/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 28ms (Views: 22.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reservations" for 188.163.5.188 at 2015-05-21 10:50:53 +0300
+Processing by ReservationsController#index as HTML
+  [1m[36mReservation Load (0.3ms)[0m  [1mSELECT "reservations".* FROM "reservations"[0m
+  Rendered reservations/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 27ms (Views: 26.3ms | ActiveRecord: 0.3ms)
